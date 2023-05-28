@@ -34,6 +34,7 @@ class ExchangeRatesController extends AbstractController
 
         foreach ($targetCurrencies as $currency) {
             $rate = $this->redis->get("currency_rate:$currency");
+            error_log('Rate from Redis: ' . $rate); // log rate from Redis
 
             if (!$rate) {
                 // Fetch from database
@@ -43,9 +44,11 @@ class ExchangeRatesController extends AbstractController
 
                 if ($currencyRate) {
                     $rate = $currencyRate->getRate();
+                    error_log('Rate from DB: ' . $rate); // log rate from DB
                     // Store in Redis
                     $this->redis->set("currency_rate:$currency", $rate);
                 } else {
+                    error_log('Currency not found in DB: ' . $currency); // log missing currency in DB
                     return new JsonResponse(['error' => 'Currency not found: ' . $currency], 404);
                 }
             }
