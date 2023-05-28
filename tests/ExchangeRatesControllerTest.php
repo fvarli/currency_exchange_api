@@ -11,7 +11,7 @@ class ExchangeRatesControllerTest extends WebTestCase
         $client = static::createClient();
 
         // (1) Send a request to the endpoint
-        $client->request('GET', '/api/exchange-rates?base_currency=USD&target_currencies=EUR,GBP,JPY');
+        $client->request('GET', '/api/exchange-rates?base_currency=USD&target_currencies=EUR,GBP,JPY,TRY');
 
         // (2) Check the response status code and content
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
