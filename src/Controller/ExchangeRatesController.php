@@ -19,7 +19,7 @@ class ExchangeRatesController extends AbstractController
     {
         $this->entityManager = $entityManager;
         $this->redis = new \Redis();
-        $this->redis->connect('localhost', 6379);
+        $this->redis->connect($_ENV['REDIS_HOST'] ?? 'localhost', $_ENV['REDIS_PORT'] ?? 6379);
     }
 
     /**
