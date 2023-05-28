@@ -49,6 +49,18 @@ This project implements a currency exchange rate API using Symfony 5. The applic
     ```
     Replace `USD` in `base_currency` and `EUR,GBP,JPY,TRY` in `target_currencies` with the currencies you want.
 
+## Scheduling the Command
+
+To schedule the command to run automatically, you can add an entry to your system's crontab. The following command will run the fetch command every day at 1 AM server time:
+
+```bash
+0 1 * * * cd /path/to/project/root && php bin/console app:currency:rates USD EUR,GBP,JPY,TRY >> /var/log/currency_rates_command.log 2>&1
+```
+
+Replace `/path/to/project/root` with the actual path to your project's root directory. This command also logs the output of the command to `/var/log/currency_rates_command.log` for monitoring purposes.
+
+Remember to replace `EUR,GBP,JPY,TRY` with the actual currencies you want to fetch.
+
 ## Tests
 
 To run the tests, use the following command:
