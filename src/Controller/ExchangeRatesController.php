@@ -38,7 +38,7 @@ class ExchangeRatesController extends AbstractController
         }
 
         // Validate the currency codes
-        $validCurrencies = ['USD', 'EUR', 'GBP', 'JPY']; // Assuming these are the valid ones
+        $validCurrencies = ['USD', 'EUR', 'GBP', 'JPY', 'TRY']; // Assuming these are the valid ones
         foreach($targetCurrencies as $currency) {
             if(!in_array($currency, $validCurrencies)) {
                 return new JsonResponse(['error' => "Invalid currency: $currency"], 400);
