@@ -28,7 +28,22 @@ class ExchangeRatesController extends AbstractController
     public function index(Request $request): Response
     {
         $baseCurrency = $request->query->get('base_currency');
+        if(!$baseCurrency) {
+            return new JsonResponse(['error' => 'base_currency parameter is required.'], 400);
+        }
+
         $targetCurrencies = explode(',', $request->query->get('target_currencies'));
+        if(empty($targetCurrencies)) {
+            return new JsonResponse(['error' => 'target_currencies parameter is required.'], 400);
+        }
+
+        // Validate the currency codes
+        $validCurrencies = ['USD', 'EUR', 'GBP']; // Assuming these are the valid ones
+        foreach($targetCurrencies as $currency) {
+            if(!in_array($currency, $validCurrencies)) {
+                return new JsonResponse(['error' => "Invalid currency: $currency"], 400);
+            }
+        }
 
         $rates = [];
 
