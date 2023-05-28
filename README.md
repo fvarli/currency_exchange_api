@@ -11,7 +11,7 @@ This project implements a currency exchange rate API using Symfony 5. The applic
 
 ## Setup
 
-1. **Clone the repository**
+1. **Clone this repository**
     ```bash
     git clone https://github.com/fvarli/currency_exchange_api.git
     ```
@@ -20,7 +20,7 @@ This project implements a currency exchange rate API using Symfony 5. The applic
     cd repository
     composer install
     ```
-3. **Environment Variables:** Create a `.env.local` file at the project root and populate the following variables:
+3. **Environment Variables:** Create a `.env` file at the project root and populate the following variables:
     ```
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
     REDIS_URL=redis://localhost
@@ -69,3 +69,25 @@ php bin/phpunit
 ```
 
 The test classes `CurrencyRatesCommandTest` and `ExchangeRatesControllerTest` are available for testing the functionality of the console command and the endpoint respectively.
+
+## Screenshots
+
+### Console
+
+![Console](./screenshots/console.png)
+
+### Redis
+
+![Redis](./screenshots/redis.png)
+
+### Database
+
+![Database](./screenshots/database.png)
+
+### Tests
+
+![Tests](./screenshots/test.png)
+
+### Postman
+
+![Postman](./screenshots/postman.png)
