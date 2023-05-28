@@ -28,7 +28,7 @@ class CurrencyRatesCommand extends Command
 
         $this->entityManager = $entityManager;
         $this->redis = new \Redis();
-        $this->redis->connect('localhost', 6379);
+        $this->redis->connect($_ENV['REDIS_HOST'] ?? 'localhost', $_ENV['REDIS_PORT'] ?? 6379);
     }
 
     protected static $defaultName = 'app:currency:rates';
