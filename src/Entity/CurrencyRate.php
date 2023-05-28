@@ -27,4 +27,34 @@ class CurrencyRate
     private $rate;
 
     // add getter and setter methods for properties
+
+    public function getId(): ?int
+{
+    return $this->id;
+}
+
+public function getCurrency(): ?string
+{
+    return $this->currency;
+}
+
+public function setCurrency(string $currency): self
+{
+    $this->currency = $currency;
+
+    return $this;
+}
+
+public function getRate(): ?string
+{
+    return $this->rate;
+}
+
+public function setRate(string $rate): self
+{
+    $this->rate = $rate;
+
+    return $this;
+}
+
 }
