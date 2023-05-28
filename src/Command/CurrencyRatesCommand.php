@@ -75,7 +75,7 @@ class CurrencyRatesCommand extends Command
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', 'https://openexchangerates.org/api/latest.json', [
             'query' => [
-                'app_id' => '', // replace with your app id from Open Exchange Rates
+                'app_id' => $_ENV['OPEN_EXCHANGE_RATES_APP_ID'], // replace with your app id from Open Exchange Rates
                 'base' => $baseCurrency,
                 'symbols' => implode(',', $targetCurrencies),
             ]
