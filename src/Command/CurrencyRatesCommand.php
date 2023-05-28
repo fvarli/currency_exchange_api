@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Entity\CurrencyRate;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -15,6 +16,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
     name: 'app:currency:rates',
     description: 'Add a short description for your command',
 )]
+
 class CurrencyRatesCommand extends Command
 {
     private EntityManagerInterface $entityManager;
@@ -100,13 +102,10 @@ class CurrencyRatesCommand extends Command
         $this->entityManager->flush();
     }
 
-
     private function saveRatesInRedis($rates)
     {
         foreach ($rates as $currency => $rate) {
             $this->redis->set("currency_rate:$currency", $rate);
         }
     }
-
-
 }
