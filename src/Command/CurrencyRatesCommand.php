@@ -14,7 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
     name: 'app:currency:rates',
-    description: 'Add a short description for your command',
+    description: 'Fetches currency exchange rates from the Open Exchange Rates API and saves them in the MySQL Database and Redis.',
 )]
 
 class CurrencyRatesCommand extends Command
