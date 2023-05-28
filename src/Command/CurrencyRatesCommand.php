@@ -92,11 +92,14 @@ class CurrencyRatesCommand extends Command
      */
     private function saveRatesInDatabase($rates)
     {
+        $now = new \DateTime();
+        
         foreach ($rates as $currency => $rate) {
             $currencyRate = new CurrencyRate();
             $currencyRate->setCurrency($currency);
             $currencyRate->setRate($rate);
-
+            $currencyRate->setCreatedAt($now);
+            
             $this->entityManager->persist($currencyRate);
         }
         $this->entityManager->flush();

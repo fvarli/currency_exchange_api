@@ -34,6 +34,11 @@ class CurrencyRate
      */
     private $rate;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
     // add getter and setter methods for properties
 
     public function getId(): ?int
@@ -60,6 +65,18 @@ class CurrencyRate
     public function setRate(string $rate): self
     {
         $this->rate = $rate;
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
         return $this;
     }
 }
