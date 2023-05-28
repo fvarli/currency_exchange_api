@@ -76,7 +76,7 @@ class CurrencyRatesCommand extends Command
         $response = $client->request('GET', 'https://openexchangerates.org/api/latest.json', [
             'query' => [
                 'app_id' => $_ENV['OPEN_EXCHANGE_RATES_APP_ID'], // replace with your app id from Open Exchange Rates
-                'base' => $baseCurrency,
+                'base' => 'USD', //$baseCurrency,
                 'symbols' => implode(',', $targetCurrencies),
             ]
         ]);
